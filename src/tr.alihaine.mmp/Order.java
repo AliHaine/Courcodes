@@ -1,9 +1,19 @@
 package src.tr.alihaine.mmp;
 
+import java.util.Scanner;
+
 public class Order {
     /**
      * Display all available menus in the restaurant.
      */
+
+    public void runMenu() {
+        this.displayAvailableMenu();
+        Scanner sc = new Scanner(System.in);
+        int nb = sc.nextInt();
+        this.displaySelectedMenu(nb);
+    }
+
     public void displayAvailableMenu() {
 
         System.out.println("Choix menu");
