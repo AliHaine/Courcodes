@@ -5,6 +5,49 @@ import java.util.Scanner;
 public class Order {
     boolean menu = false;
 
+    public void run() {
+        this.displayNumbersMenus();
+        Scanner sc = new Scanner(System.in);
+        int nbMenus = sc.nextInt();
+        if (nbMenus > 0) {
+            for (int i = nbMenus; i > 0; i--) {
+                this.runMenus();
+                nbMenus--;
+            }
+        } else {
+            this.runMenu();
+        }
+    }
+
+    public void runMenus() {
+        this.displayAvailableMenu();
+        Scanner sc = new Scanner(System.in);
+        int nbMenu = sc.nextInt();
+        switch (nbMenu) {
+            case 1:
+                displayAvailableSide(true);
+                int nbSide = sc.nextInt();
+                displaySelectedSide(nbSide, true);
+                displayAvailableDrink();
+                int nbDrink = sc.nextInt();
+                displaySelectedDrink(nbDrink);
+                break;
+            case 2:
+                displayAvailableSide(true);
+                nbSide = sc.nextInt();
+                displaySelectedSide(nbSide, true);
+                break;
+            case 3:
+                displayAvailableSide(false);
+                nbSide = sc.nextInt();
+                displaySelectedSide(nbSide, false);
+                displayAvailableDrink();
+                nbDrink = sc.nextInt();
+                displaySelectedDrink(nbDrink);
+                break;
+        }
+    }
+
     public void runMenu() {
         while (!menu) {
             this.displayAvailableMenu();
@@ -35,6 +78,10 @@ public class Order {
                     break;
             }
         }
+    }
+
+    public void displayNumbersMenus() {
+        System.out.println("Combien de menu souhaitez-vous ?");
     }
 
     public void displayAvailableMenu() {
